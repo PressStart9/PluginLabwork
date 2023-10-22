@@ -8,11 +8,11 @@
 
     <resource-bundle>messages.MyBundle</resource-bundle>
 
-    <extensions defaultExtensionNs="com.intellij">
-        <toolWindow factoryClass="com.github.pressstart9.pluginlabwork.toolWindow.MyToolWindowFactory" id="MyToolWindow"/>
-    </extensions>
-
-    <applicationListeners>
-        <listener class="com.github.pressstart9.pluginlabwork.listeners.MyApplicationActivationListener" topic="com.intellij.openapi.application.ApplicationActivationListener"/>
-    </applicationListeners>
+    <actions>
+        <action id="pluginlabwork.addexistingfiles"
+                class="com.github.pressstart9.pluginlabwork.services.AddExistingFiles" text="Add existing files"
+                description="Copy folder or files from another project">
+            <add-to-group group-id="PasteGroup" anchor="after" relative-to-action="$Paste"/>
+        </action>
+    </actions>
 </idea-plugin>

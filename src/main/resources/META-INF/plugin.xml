@@ -14,5 +14,9 @@
                 description="Copy folder or files from another project">
             <add-to-group group-id="PasteGroup" anchor="after" relative-to-action="$Paste"/>
         </action>
+        <action id="pluginlabwork.addtemplatefile" class="com.github.pressstart9.pluginlabwork.services.AddTemplateFile"
+                text="Copying Template" description="Create template file">
+            <add-to-group group-id="NewGroup" anchor="last"/>
+        </action>
     </actions>
 </idea-plugin>

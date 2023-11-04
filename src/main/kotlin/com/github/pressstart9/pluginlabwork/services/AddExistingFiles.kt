@@ -122,8 +122,10 @@ class AddExistingFiles : AnAction() {
             descriptor.isShowFileSystemRoots = true
             descriptor.withFileFilter { it.name.endsWith(".md")}
 
-            FileChooser.chooseFile(descriptor, project, null) {
-                val inputStream = it.inputStream
+            val sFile = FileChooser.chooseFile(descriptor, project, null)
+
+            if (sFile != null) {
+                val inputStream = sFile.inputStream
                 BufferedReader(InputStreamReader(inputStream)).use { reader ->
                     var line: String
                     line = reader.readLine().substringAfter(": ")
@@ -144,7 +146,12 @@ class AddExistingFiles : AnAction() {
                     line = reader.readLine()
                     while (line[0] != '_') {
                         val fromTo = line.split("\" -> \"")
-                        namingPatterns.add(Pair(fromTo[0].substring(1).toRegex(), fromTo[1].substring(0, fromTo[1].length - 1)))
+                        namingPatterns.add(
+                            Pair(
+                                fromTo[0].substring(1).toRegex(),
+                                fromTo[1].substring(0, fromTo[1].length - 1)
+                            )
+                        )
                         line = reader.readLine()
                     }
 
@@ -152,9 +159,9 @@ class AddExistingFiles : AnAction() {
                         includeFolders = false
                     }
                 }
-
-                chooseFiles(e.getRequiredData(CommonDataKeys.VIRTUAL_FILE))
             }
+
+            chooseFiles(e.getRequiredData(CommonDataKeys.VIRTUAL_FILE))
         }
     }
 }

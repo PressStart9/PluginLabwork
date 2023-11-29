@@ -10,11 +10,11 @@ To specify some copying rules we can use templates with ".md" extension.
 
 In the end of popup window for creating new files there is new button, which creates copying template.
 
-![Template creation button](/images/TemplateButton.png)
+![Template creation button](./images/TemplateButton.png)
 
 This creates file of ".md" extension with the following content:
 
-![Template file content](/images/TemplateFile.png)
+![Template file content](./images/TemplateFile.png)
 
 ## Format
 
